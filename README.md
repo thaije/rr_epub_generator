@@ -1,6 +1,6 @@
-# rr_epub_generator
+# Royal Roads Epub Generator
 
-Epub generator for webpages scraped from RoyalRoads
+Epub generator for webpages scraped from novels at RoyalRoads
 
 # How to install
 
@@ -19,8 +19,31 @@ Install the requirements:
 
 # How to run
 
-- Change the `starting_url` in `crawl_and_gen_epub_pages.html` to link to the first chapter you want to crawl. The script will automatically look for next chapters untill no new chapters found.
+- Change the `starting_url` in `crawl_and_gen_epub_pages.html` to link to the first chapter of the novel you want crawl. The script will automatically look for next chapters untill no new chapters found.
 - `python crawl_and_gen_epub_pages.html`
+- Download [Sigil](https://sigil-ebook.com/), create a new Epub, and copy paste the generated html files into the Text folder of your epub 
+- (optional) Add a title to your epub file:
+    - Change the `docTitle` in the `toc.ncx` file, and the `<dc:title>` in `content.opf`. 
+- (optional) Add a cover photo to your epub:
+    - Add an image to the `Images` folder in your epub in Sigil
+    - In the `Text` folder of your epub in Sigil, add a new page called cover.xhtml. 
+    - Replace the content with e.g. something like below (making sure the file name is correct):
+```html
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+  "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Cover</title>
+</head>
+
+<body>
+  <img style="width:100%; height:auto;" alt="cover" src="../Images/cover.png"/>
+</body>
+</html> 
+```
+
 
 # How it works
 
@@ -35,3 +58,7 @@ This script:
 4. Tries to find Next Chapter button, and if available, go back to step 2 for the new chapter.
 
 The result is that `/output` folder is filled with html pages, for each chapter one. Copy paste these pages into your Sigil Epub, save as epub, and done.
+
+# Troubleshooting
+Epubs are not exactly the same as html, and some html can cause errors. For example, the `<hr>` tag ( a horizontal line) or the `<br>` tag (a newline) need to be replaced with `<hr/>` and `<br/>`. 
+If you get errors such as this in Sigil or your epub reader, you can add some custom rules for removing non-epub friendly HTML on [this line](https://github.com/thaije/rr_epub_generator/blob/main/crawl_and_gen_epub_pages.py#L58).
