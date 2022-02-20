@@ -1,6 +1,6 @@
 # Royal Roads Epub Generator
 
-Epub generator for webpages scraped from novels at RoyalRoads
+Simple epub generator with webscraper for novels at RoyalRoads
 
 # How to install
 
