@@ -60,5 +60,7 @@ This script:
 The result is that `/output` folder is filled with html pages, for each chapter one. Copy paste these pages into your Sigil Epub, save as epub, and done.
 
 # Troubleshooting
-Epubs are not exactly the same as html, and some html can cause errors. For example, the `<hr>` tag ( a horizontal line) or the `<br>` tag (a newline) need to be replaced with `<hr/>` and `<br/>`. 
+- Epubs are not exactly the same as html, and some html can cause errors. For example, the `<hr>` tag ( a horizontal line) or the `<br>` tag (a newline) need to be replaced with `<hr/>` and `<br/>`. 
 If you get errors such as this in Sigil or your epub reader, you can add some custom rules for removing non-epub friendly HTML on [this line](https://github.com/thaije/rr_epub_generator/blob/main/crawl_and_gen_epub_pages.py#L58).
+- In the current version there is no table of contents for the chapters in the epub itself.
+- It is possible for websites to block webscrapers. I didn't have this issue with RoyalRoads yet, but depending on where you live and your internet / VPN / browser, this might be a problem.
