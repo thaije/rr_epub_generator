@@ -19,7 +19,7 @@ Install the requirements:
 
 # How to run
 
-- Change the `starting_url` in `crawl_and_gen_epub_pages.html` to link to the first chapter of the novel you want crawl. The script will automatically look for next chapters untill no new chapters found.
+- Change the `starting_url` in `crawl_and_gen_epub_pages.html` to link to the first chapter of the novel you want to crawl. The script will automatically look for next chapters untill no new chapters found.
 - `python crawl_and_gen_epub_pages.html`
 - Download [Sigil](https://sigil-ebook.com/), create a new Epub, and copy paste the generated html files into the Text folder of your epub 
 - (optional) Add a title to your epub file:
