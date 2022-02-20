@@ -4,7 +4,7 @@ Simple epub generator with webscraper for novels at RoyalRoads
 
 # How to install
 
-Make a virtual env with Python3:
+(optional) Make a virtual env with Python3:
 
 - `pip install virtualenv virtualenvwrapper`
 - `export WORKON_HOME=$HOME/.virtualenvs`
