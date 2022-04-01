@@ -6,8 +6,8 @@ import warnings
 import shutil
 
 base_url = "https://www.royalroad.com"
-starting_url = "/fiction/8463/the-arcane-emperor/chapter/94620/chapter-1-new-beginnings"
-book_name = "The Arcane Emperor"
+starting_url = "/fiction/21188/forge-of-destiny/chapter/301255/prologue-smelting"
+book_name = "Forge of Destiny"
 
 
 def read_in_page(file_name):
@@ -22,13 +22,15 @@ def read_in_page(file_name):
 def get_cover():
     html = get_chapter(base_url + starting_url)
 
-    # return "", "png"
-
     # get the cover url from the link
     img_link = html.find('img', attrs={'class': 'img-offset'})['src'].lower()
 
     img_name = img_link.split("/")[-1]
     file_extension = img_name.split(".")[-1]
+
+    # remove url parameters from file extension
+    if "?" in file_extension:
+        file_extension = file_extension.split("?")[0]
 
     if file_extension not in ["jpg", "jpeg", "png"]:
         warnings.warn("Cover image is not a PNG or JPG, so skipping adding the cover image")
@@ -142,7 +144,7 @@ def crawl_chapters():
     while chapter:
         chapter_i += 1
 
-        title = get_title(chapter)
+        title = get_title(chapter).replace("/", "-")
         content = get_content(chapter)
         print(f"Parsed chapter {chapter_i}")
 
@@ -264,7 +266,7 @@ def main():
     # get the image cover
     cover_img_data, cover_img_f_extension = get_cover()
 
-    # create some epub files
+    # create some files for in the epub
     create_content_file(chapters, cover_img_f_extension)
     create_toc_file(chapters)
     create_cover_file(chapters, cover_img_f_extension)
