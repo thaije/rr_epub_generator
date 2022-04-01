@@ -6,8 +6,9 @@ import warnings
 import shutil
 
 base_url = "https://www.royalroad.com"
-starting_url = "/fiction/21188/forge-of-destiny/chapter/301255/prologue-smelting"
-book_name = "Forge of Destiny"
+starting_url = "/fiction/8894/everybody-loves-large-chests/chapter/99919/prologue"
+book_name = "Everybody Loves Large Chests"
+download_cover = True
 
 
 def read_in_page(file_name):
@@ -239,7 +240,8 @@ def write_to_epub(chapters, cover_img_data, cover_img_f_extension):
     epub.writestr('OEBPS/toc.ncx', toc)
     epub.writestr('OEBPS/content.opf', content)
     epub.writestr('OEBPS/Text/cover.xhtml', cover)
-    epub.writestr(f'OEBPS/Images/cover.{cover_img_f_extension}', cover_img_data)
+    if download_cover:
+        epub.writestr(f'OEBPS/Images/cover.{cover_img_f_extension}', cover_img_data)
 
     # write all chapters to the epub zip
     for chapter in chapters:

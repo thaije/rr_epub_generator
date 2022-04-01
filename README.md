@@ -20,3 +20,7 @@ Copy paste the generated epub to your ereader of preference.
 
 Epubs are basically zip files that look fancy. In the zip you have seperate html pages for each book chapter, in addition to some extra XML files so your ereader knows which chapters are available and what the cover image is etc.
 For creating this script I first figured out how to create a epub file with Python with a cover image and working table of contents (see the template files in `/templates`). The script dynamically fills these templates with data scraped from royalroads. Scraping starts with a specified starting chapter, after which the script tries to look for a link to the next chapter. In this manner all chapters are scraped and added to the epub untill there is no next chapter link, and we are done.
+
+# Troubleshooting
+
+Some epubs may give a DRM warning when you try to open them on an EPUB reader. Best way I managed to circumvent this is to open the epub on your computer with e.g. Sigil, and make some change such as deleting `Images/cover.png`. Then saving and reuploading to your epub reader worked for me.
