@@ -6,8 +6,8 @@ import warnings
 import shutil
 
 base_url = "https://www.royalroad.com"
-starting_url = "/fiction/8894/everybody-loves-large-chests/chapter/99919/prologue"
-book_name = "Everybody Loves Large Chests"
+starting_url = "/fiction/4293/the-iron-teeth-a-goblins-tale/chapter/44831/the-road-north-2"
+book_name = "The Iron Teeth: A Goblin's Tale"
 download_cover = True
 
 
